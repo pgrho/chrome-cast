@@ -25,7 +25,7 @@ namespace Shipwreck.TypeScriptModels
             {
                 if (i > 0)
                 {
-                    writer.Write('|');
+                    writer.Write(" | ");
                 }
                 UnderlyingTypes[i].WriteTypeName(writer);
             }

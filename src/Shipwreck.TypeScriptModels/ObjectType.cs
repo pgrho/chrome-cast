@@ -39,9 +39,10 @@ namespace Shipwreck.TypeScriptModels
 
         public void WriteTypeName(TextWriter writer)
         {
-            writer.Write("{ ");
-            if (_Properties != null)
+            if (_Properties?.Count > 0)
             {
+                writer.Write("{ ");
+
                 for (var i = 0; i < _Properties.Count; i++)
                 {
                     if (i > 0)
@@ -57,8 +58,13 @@ namespace Shipwreck.TypeScriptModels
                     writer.Write(": ");
                     pt.PropertyType.WriteTypeName(writer);
                 }
+
+                writer.Write(" }");
             }
-            writer.Write(" }");
+            else
+            {
+                writer.Write("{}");
+            }
         }
     }
 }

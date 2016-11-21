@@ -101,7 +101,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
                 var code = sw.ToString();
 
-                File.WriteAllText("_test.d.ts", code);
+                File.WriteAllText("../../chrome-cast.d.ts", code);
                 Console.WriteLine(code);
             }
 

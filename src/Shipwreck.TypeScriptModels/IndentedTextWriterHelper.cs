@@ -40,7 +40,7 @@ namespace Shipwreck.TypeScriptModels
             writer.Write(")");
             if (returnTypeFatArrow)
             {
-                writer.Write("=> ");
+                writer.Write(" => ");
             }
             else
             {
