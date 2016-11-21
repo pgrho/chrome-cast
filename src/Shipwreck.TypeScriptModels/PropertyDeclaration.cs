@@ -20,6 +20,7 @@ namespace Shipwreck.TypeScriptModels
                 return;
             }
 
+            writer.WriteDocumentation(Documentation);
             writer.Write(Name);
             if (!IsRequired)
             {

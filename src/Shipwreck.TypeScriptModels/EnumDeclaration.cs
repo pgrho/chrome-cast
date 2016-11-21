@@ -30,6 +30,7 @@ namespace Shipwreck.TypeScriptModels
 
         public override void WriteAsDeclaration(IndentedTextWriter writer)
         {
+            writer.WriteDocumentation(Documentation);
             writer.Write("enum ");
             writer.Write(Name);
             writer.WriteLine(" {");
@@ -39,6 +40,7 @@ namespace Shipwreck.TypeScriptModels
             {
                 foreach (var s in _Members)
                 {
+                    writer.WriteDocumentation(s.Documentation);
                     writer.Write(s.Name);
                     writer.WriteLine(",");
                 }

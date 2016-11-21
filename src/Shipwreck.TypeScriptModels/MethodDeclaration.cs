@@ -36,6 +36,7 @@ namespace Shipwreck.TypeScriptModels
                 return;
             }
 
+            writer.WriteDocumentation(Documentation);
             writer.Write(Name);
             writer.WriteParameterDeclaration(this, false);
         }

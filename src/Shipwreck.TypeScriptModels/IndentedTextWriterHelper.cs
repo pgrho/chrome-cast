@@ -3,12 +3,39 @@ using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace Shipwreck.TypeScriptModels
 {
     internal static class IndentedTextWriterHelper
     {
+        public static void WriteDocumentation(this TextWriter writer, Documentation documentation)
+        {
+            if (documentation != null)
+            {
+                writer.WriteLine("/**");
+                writer.Write(" * ");
+                writer.WriteLine(documentation.Summary);
+                if (documentation.Parameters.Any())
+                {
+                    foreach (var p in documentation.Parameters)
+                    {
+                        writer.Write(" * @param "); 
+                        writer.Write(p.ParameterName);
+                        writer.Write(' ');
+                        writer.WriteLine(p.Description);
+                    }
+                }
+                if (documentation.Returns != null)
+                {
+                    writer.Write(" * @return "); 
+                    writer.WriteLine(documentation.Returns);
+                }
+                writer.WriteLine(" */");
+            }
+        }
+
         public static void WriteParameterDeclaration(this IndentedTextWriter writer, ITypeScriptFunction function, bool returnTypeFatArrow)
         {
             writer.Write("(");

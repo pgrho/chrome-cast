@@ -15,6 +15,7 @@ namespace Shipwreck.TypeScriptModels
 
         public override void WriteAsDeclaration(IndentedTextWriter writer)
         {
+            writer.WriteDocumentation(Documentation);
             writer.Write("var ");
             writer.Write(Name);
             if (VariableType != null)

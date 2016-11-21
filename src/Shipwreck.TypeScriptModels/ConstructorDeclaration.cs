@@ -33,6 +33,7 @@ namespace Shipwreck.TypeScriptModels
         {
             if (DeclaringType != null)
             {
+                writer.WriteDocumentation(Documentation);
                 writer.Write("new ");
                 writer.WriteParameterDeclaration(this, false);
             }

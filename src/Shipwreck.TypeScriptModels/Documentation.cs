@@ -11,7 +11,7 @@ namespace Shipwreck.TypeScriptModels
         private List<ParameterDocumentation> _Parameters;
 
         public string Summary { get; set; }
-        public string Returns { get; set; }
+        public string Returns { get; set; } 
 
         public List<ParameterDocumentation> Parameters
         {

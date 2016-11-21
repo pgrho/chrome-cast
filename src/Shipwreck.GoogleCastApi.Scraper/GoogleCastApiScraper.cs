@@ -33,8 +33,6 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
         public event EventHandler<ScraperDonwloadEventArgs> Downloaded;
 
-
-
         public event EventHandler<ModuleEventArgs> ModuleParsing;
 
         public event EventHandler<ModuleEventArgs> ModuleParsed;
@@ -46,8 +44,6 @@ namespace Shipwreck.GoogleCastApi.Scraper
         public event EventHandler<MemberEventArgs> MemberParsed;
 
         public event EventHandler<StatementEventArgs> StatementParsed;
-
-
 
         private async Task<string> DownloadContentAsync(HttpClient client, string url)
         {
@@ -84,6 +80,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
             return e.Type;
         }
+
         public async Task<TypeScriptContext> LoadAsync(string rootUrl)
         {
             using (var hc = new HttpClient())
@@ -109,14 +106,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
                     var kind = m.SelectSingleNode("header//*[@class='label label-kind']").InnerText?.Trim();
 
-                    var desc = m.SelectSingleNode("header//p")?.InnerText;
-
-                    Console.WriteLine($"    {fullName} {kind} {desc}");
-
-                    if (desc == null)
-                    {
-                        Console.Write("");
-                    }
+                    var desc = m.SelectNodes("header//p").SanitizeDocumentation();
 
                     var section = m.SelectSingleNode("section");
 
@@ -216,7 +206,6 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
                             default:
                                 t = H2.None;
-                                Debugger.Break();
                                 break;
                         }
                     }
@@ -236,11 +225,12 @@ namespace Shipwreck.GoogleCastApi.Scraper
                                         IsExport = true,
                                         IsAbstract = t == H2.AbstractType
                                     };
-                                    if (desc != null)
+                                    var dsc = h.ParentNode.SelectNodes("p[not(@class)]").SanitizeDocumentation();
+                                    if (dsc != null)
                                     {
                                         cl.Documentation = new Documentation()
                                         {
-                                            Summary = desc
+                                            Summary = dsc
                                         };
                                     }
                                     md.Statements.Add(cl);
@@ -261,7 +251,6 @@ namespace Shipwreck.GoogleCastApi.Scraper
                                 break;
 
                             default:
-                                Debugger.Break();
                                 break;
                         }
                     }
@@ -357,7 +346,6 @@ namespace Shipwreck.GoogleCastApi.Scraper
                                 break;
 
                             default:
-                                Debugger.Break();
                                 break;
                         }
                     }
@@ -391,12 +379,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
             vd.IsRequired = pt.IsRequired;
             vd.PropertyType = pt.Type;
 
-            if (vd.PropertyType == null)
-            {
-                Debugger.Break();
-            }
-
-            var dsc = div.SelectSingleNode("p[not(@class)]")?.InnerText.Trim();
+            var dsc = div.SelectNodes("p[not(@class)]").SanitizeDocumentation();
             if (dsc != null)
             {
                 vd.Documentation = new Documentation()
@@ -424,7 +407,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
         {
             var div = h3.ParentNode;
             var enumType = div.SelectSingleNode("*[@class='type-signature']")?.InnerText.Trim();
-            var desc = div.SelectSingleNode("p[not(@class)]")?.InnerText.Trim();
+            var desc = div.SelectNodes("p[not(@class)]").SanitizeDocumentation();
 
             TypeDeclaration td;
             ITypeScriptType ft;
@@ -467,9 +450,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
                     if (mn != null)
                     {
-                        var md = tr.SelectSingleNode("td[2]")?.InnerText?.Trim();
-
-                        Console.WriteLine("        {0}: {1}", mn, md);
+                        var md = tr.SelectNodes("td[2]").SanitizeDocumentation();
 
                         var f = new FieldDeclaration();
                         f.AccessModifier = AccessModifier.Public;
@@ -504,7 +485,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
                 Name = sn,
                 VariableType = string.IsNullOrEmpty(typeText) ? BuiltinType.Any : ResolveType(tsc, typeText).Type
             };
-            var dsc = div.SelectSingleNode("p[not(@class)]")?.InnerText.Trim();
+            var dsc = div.SelectNodes("p[not(@class)]").SanitizeDocumentation();
             if (dsc != null)
             {
                 vd.Documentation = new Documentation()
@@ -532,13 +513,13 @@ namespace Shipwreck.GoogleCastApi.Scraper
         {
             fd.Name = name;
             fd.Documentation = new Documentation();
-            fd.Documentation.Summary = div.SelectSingleNode("p[not(@class)]")?.InnerText.Trim();
+            fd.Documentation.Summary = div.SelectNodes("p[not(@class)]").SanitizeDocumentation();
 
             var returnValue = div.SelectSingleNode("dl/dd/p");
             if (returnValue != null)
             {
                 fd.ReturnType = ResolveType(tsc, returnValue.SelectSingleNode("code").InnerText).Type;
-                fd.Documentation.Returns = returnValue.SelectSingleNode("text()")?.InnerText;
+                fd.Documentation.Returns = returnValue.SelectNodes("text()").SanitizeDocumentation();
             }
 
             var trs = div.SelectNodes("section//table/tbody/tr");
@@ -561,17 +542,11 @@ namespace Shipwreck.GoogleCastApi.Scraper
                         fd.Documentation.Parameters.Add(new ParameterDocumentation()
                         {
                             ParameterName = mn,
-                            Description = tr.SelectNodes("td[2]/p[not(@class)]")?.Aggregate((StringBuilder)null, (sb, p) => sb == null ? new StringBuilder(p.InnerText) : sb.Append(' ').Append(p.InnerText))?.ToString()
+                            Description = tr.SelectNodes("td[2]/p[not(@class)]").SanitizeDocumentation()
                         });
-                        if (fd.Parameters.Last() == null)
-                        {
-                            Debugger.Break();
-                        }
                     }
                 }
             }
         }
     }
-
-
 }

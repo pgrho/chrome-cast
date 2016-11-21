@@ -32,6 +32,8 @@ namespace Shipwreck.TypeScriptModels
 
         public override void WriteAsDeclaration(IndentedTextWriter writer)
         {
+            writer.WriteDocumentation(Documentation);
+
             writer.Write("interface ");
             writer.Write(Name);
             writer.WriteLine(" {");
