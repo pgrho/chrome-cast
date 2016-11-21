@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CastVideos.Chrome</RootNamespace>
+    <AssemblyName>CastVideos.Chrome</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CONTRIBUTING.md" />
+    <Content Include="LICENSE" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CastVideos.js" />
+    <Content Include="css\CastVideos.css" />
+    <Content Include="css\demo.css" />
+    <Content Include="imagefiles\android-icon-512x512.png" />
+    <Content Include="imagefiles\apple-touch-icon-114x114-precomposed.png" />
+    <Content Include="imagefiles\apple-touch-icon-57x57-precomposed.png" />
+    <Content Include="imagefiles\apple-touch-icon-72x72-precomposed.png" />
+    <Content Include="imagefiles\audio_bg.png" />
+    <Content Include="imagefiles\audio_bg_level.png" />
+    <Content Include="imagefiles\audio_bg_track.png" />
+    <Content Include="imagefiles\audio_indicator-hover.png" />
+    <Content Include="imagefiles\audio_indicator.png" />
+    <Content Include="imagefiles\audio_indicator_hover.png" />
+    <Content Include="imagefiles\audio_off.png" />
+    <Content Include="imagefiles\audio_on.png" />
+    <Content Include="imagefiles\favicon-16x16.png" />
+    <Content Include="imagefiles\favicon-32x32.png" />
+    <Content Include="imagefiles\favicon-64x64.png" />
+    <Content Include="imagefiles\favicon.ico" />
+    <Content Include="imagefiles\footer_bg.png" />
+    <Content Include="imagefiles\fullscreen.png" />
+    <Content Include="imagefiles\fullscreen_collapse.png" />
+    <Content Include="imagefiles\fullscreen_expand.png" />
+    <Content Include="imagefiles\header_bg-bottom.png" />
+    <Content Include="imagefiles\header_bg-top.png" />
+    <Content Include="imagefiles\header_bg.png" />
+    <Content Include="imagefiles\ic_media_route-hover.png" />
+    <Content Include="imagefiles\ic_media_route-press.png" />
+    <Content Include="imagefiles\ic_media_route_disabled_custom.png" />
+    <Content Include="imagefiles\ic_media_route_hover.png" />
+    <Content Include="imagefiles\ic_media_route_off_custom.png" />
+    <Content Include="imagefiles\ic_media_route_on_0_custom.png" />
+    <Content Include="imagefiles\ic_media_route_on_1_custom.png" />
+    <Content Include="imagefiles\ic_media_route_on_2_custom.png" />
+    <Content Include="imagefiles\ic_media_route_on_custom.png" />
+    <Content Include="imagefiles\ic_media_route_press.png" />
+    <Content Include="imagefiles\logo.png" />
+    <Content Include="imagefiles\pause-hover.png" />
+    <Content Include="imagefiles\pause-press.png" />
+    <Content Include="imagefiles\pause.png" />
+    <Content Include="imagefiles\pause_hover.png" />
+    <Content Include="imagefiles\pause_press.png" />
+    <Content Include="imagefiles\play-hover.png" />
+    <Content Include="imagefiles\play-press.png" />
+    <Content Include="imagefiles\play.png" />
+    <Content Include="imagefiles\play_hover.png" />
+    <Content Include="imagefiles\play_press.png" />
+    <Content Include="imagefiles\tab_bg.png" />
+    <Content Include="imagefiles\thumb_highlight.png" />
+    <Content Include="imagefiles\thumb_hover.png" />
+    <Content Include="imagefiles\timeline_bg_buffer.png" />
+    <Content Include="imagefiles\timeline_bg_progress.png" />
+    <Content Include="imagefiles\timeline_bg_track.png" />
+    <Content Include="imagefiles\timeline_indicator-hover.png" />
+    <Content Include="imagefiles\timeline_indicator.png" />
+    <Content Include="imagefiles\timeline_indicator_hover.png" />
+    <Content Include="imagefiles\video_info_bg.png" />
+    <Content Include="imagefiles\video_overlay.png" />
+    <Content Include="images\bunny.jpg" />
+    <Content Include="images\casticon.on.png" />
+    <Content Include="images\cast_icon_active.png" />
+    <Content Include="images\cast_icon_error.png" />
+    <Content Include="images\cast_icon_idle.png" />
+    <Content Include="images\cast_icon_warning.png" />
+    <Content Include="images\ed.jpg" />
+    <Content Include="images\fullscreen.png" />
+    <Content Include="images\google-io-2011.jpg" />
+    <Content Include="images\reel.jpg" />
+    <Content Include="images\Tears.jpg" />
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60097</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60097/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

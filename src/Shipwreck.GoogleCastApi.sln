@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipwreck.GoogleCastApi.Scr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipwreck.TypeScriptModels", "Shipwreck.TypeScriptModels\Shipwreck.TypeScriptModels.csproj", "{0B86311A-B8CF-4BF5-B4E6-795C411A5F47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CastVideos.Chrome", "CastVideos.Chrome\CastVideos.Chrome.csproj", "{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0B86311A-B8CF-4BF5-B4E6-795C411A5F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B86311A-B8CF-4BF5-B4E6-795C411A5F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B86311A-B8CF-4BF5-B4E6-795C411A5F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84CC1FE-4EC6-4C43-A7F5-A9114BD83462}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
