@@ -27,6 +27,8 @@ namespace Shipwreck.GoogleCastApi.Scraper
             AbstractType,
         }
 
+        public bool StringEnumAsClass { get; set; }
+
         public event EventHandler<TypeResolveEventArgs> TypeResolved;
 
         public event EventHandler<ScraperDonwloadEventArgs> Downloading;
@@ -357,8 +359,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
         private void ProcessConstructor(TypeScriptContext tsc, ClassDeclaration md, HtmlNode h, string sn)
         {
             var div = h.ParentNode;
-            var fd = new ConstructorDeclaration();
-
+            var fd = new ConstructorDeclaration(); 
             ProcessFunctionCore(tsc, sn, div, fd);
             md.Members.Add(fd);
 
@@ -376,7 +377,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
 
             var pt = ResolveType(tsc, div.SelectSingleNode("*[@class='type-signature']")?.InnerText.Trim());
 
-            vd.IsRequired = pt.IsRequired;
+            vd.IsRequired = !pt.IsNullable;
             vd.PropertyType = pt.Type;
 
             var dsc = div.SelectNodes("p[not(@class)]").SanitizeDocumentation();
@@ -412,7 +413,7 @@ namespace Shipwreck.GoogleCastApi.Scraper
             TypeDeclaration td;
             ITypeScriptType ft;
             IList fs;
-            if (enumType == null || enumType.Equals("number"))
+            if (!StringEnumAsClass || enumType == null || enumType.Equals("number"))
             {
                 var ed = new EnumDeclaration();
                 td = ed;
@@ -533,11 +534,12 @@ namespace Shipwreck.GoogleCastApi.Scraper
                     if (mn != null)
                     {
                         var pt = ResolveType(tsc, tr.SelectSingleNode("td[2]/p[@class='details-table-types']")?.InnerText?.Trim());
+
                         fd.Parameters.Add(new ParameterDeclaration()
                         {
                             Name = mn,
                             ParameterType = pt.Type,
-                            IsRequired = !pt.IsNullable
+                            IsRequired = tr.SelectSingleNode("td[2]/p[@class='details-table-optional']") == null && !pt.IsNullable
                         });
                         fd.Documentation.Parameters.Add(new ParameterDocumentation()
                         {

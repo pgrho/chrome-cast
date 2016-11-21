@@ -12,7 +12,7 @@ namespace Shipwreck.TypeScriptModels
         private List<ParameterDeclaration> _Parameters;
 
         ITypeScriptType ITypeScriptFunction.ReturnType { get { return DeclaringType; } set { } }
-
+         
         public List<ParameterDeclaration> Parameters
         {
             get
@@ -34,7 +34,7 @@ namespace Shipwreck.TypeScriptModels
             if (DeclaringType != null)
             {
                 writer.WriteDocumentation(Documentation);
-                writer.Write("new ");
+                writer.Write("new "); 
                 writer.WriteParameterDeclaration(this, false);
             }
         }
